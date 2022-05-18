@@ -51,6 +51,12 @@ view: sync_logs {
     sql: ${TABLE}.status_message ;;
   }
 
+  dimension: status_message_category {
+    type: string
+    # sql: substring(${status_message},1,regexp_instr(${status_message},':',1,2)-1) ;;
+    sql: INITCAP(LEFT(${status_message}, regexp_instr(${status_message},':',1,2)-1)) ;;
+  }
+
   dimension_group: _census_logged_at {
     type: time
     sql: ${TABLE}._census_logged_at ;;
