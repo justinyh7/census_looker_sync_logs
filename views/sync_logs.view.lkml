@@ -58,6 +58,7 @@ view: sync_logs {
   }
 
   dimension_group: _census_logged_at {
+    label: "Log"
     type: time
     sql: ${TABLE}._census_logged_at ;;
   }
