@@ -87,16 +87,19 @@ view: sync_logs {
   measure: count {
     type: count
     label: "Sync Count"
+    drill_fields: [log_id, sync_id, sync_run_id, _census_logged_at_date]
   }
 
   measure: rejected_syncs {
     type: count
     filters: [status: "rejected"]
+    drill_fields: [log_id, sync_id, sync_run_id, status_message, _census_logged_at_date]
   }
 
   measure: successful_syncs {
     type: count
     filters: [status: "succeeded"]
+    drill_fields: [log_id, sync_id, sync_run_id, _census_logged_at_date]
   }
 
   measure: percent_rejected {
