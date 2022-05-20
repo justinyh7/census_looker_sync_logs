@@ -9,6 +9,11 @@ view: sync_logs {
   dimension: sync_id {
     type: string
     sql: ${TABLE}.sync_id ;;
+    link: {
+      label: "{{value}} Sync History"
+      url: "https://app.getcensus.com/syncs/{{ value | encode_uri }}/sync-history"
+      icon_url: "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/llmjpn8a0pgu8szjmnyi"
+    }
   }
 
   dimension: sync_run_id {
@@ -53,8 +58,8 @@ view: sync_logs {
 
   dimension: status_message_category {
     type: string
-    # sql: substring(${status_message},1,regexp_instr(${status_message},':',1,2)-1) ;;
-    sql: INITCAP(LEFT(${status_message}, regexp_instr(${status_message},':',1,2)-1)) ;;
+    # sql: INITCAP(LEFT(${status_message}, regexp_instr(${status_message},':',1,2)-1)) ;;
+    sql: INITCAP(LEFT(${status_message}, regexp_instr(${status_message},':',1,1)-1)) ;;
   }
 
   dimension_group: _census_logged_at {
