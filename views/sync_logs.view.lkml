@@ -1,12 +1,5 @@
 view: sync_logs {
-  # sql_table_name: census.sync_log ;;
-
-  # Hacking a derived table because the syncs did not run over the weekend
-  derived_table: {
-    sql: SELECT *
-      FROM CENSUS.CENSUS.SYNC_LOG
-      ;;
-  }
+  sql_table_name: census.sync_log ;;
 
   dimension: log_id {
     type: string
