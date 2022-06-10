@@ -4,24 +4,7 @@ view: sync_logs {
   # Hacking a derived table because the syncs did not run over the weekend
   derived_table: {
     sql: SELECT *
-      ,     NULL AS LOGGED_AT_OVERRIDE
       FROM CENSUS.CENSUS.SYNC_LOG
-
-      UNION
-
-      SELECT TOP 12 *
-      ,       '2022-05-21'::timestamp AS LOGGED_AT_OVERRIDE
-      FROM CENSUS.CENSUS.SYNC_LOG
-      WHERE DATE(_CENSUS_LOGGED_AT) = CURRENT_DATE - 1 AND
-      STATUS = 'succeeded'
-
-      UNION
-
-      SELECT TOP 14 *
-      ,       '2022-05-22'::timestamp AS LOGGED_AT_OVERRIDE
-      FROM CENSUS.CENSUS.SYNC_LOG
-      WHERE DATE(_CENSUS_LOGGED_AT) = CURRENT_DATE - 1 AND
-      STATUS = 'succeeded'
       ;;
   }
 
@@ -82,7 +65,6 @@ view: sync_logs {
 
   dimension: status_message_category {
     type: string
-    # sql: INITCAP(LEFT(${status_message}, regexp_instr(${status_message},':',1,2)-1)) ;;
     sql: INITCAP(LEFT(${status_message}, regexp_instr(${status_message},':',1,1)-1)) ;;
   }
 
