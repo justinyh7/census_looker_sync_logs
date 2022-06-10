@@ -71,7 +71,7 @@ view: sync_logs {
   dimension_group: _census_logged_at {
     label: "Log"
     type: time
-    sql: COALESCE(${TABLE}.LOGGED_AT_OVERRIDE, ${TABLE}._census_logged_at) ;;
+    sql: ${TABLE}._census_logged_at ;;
   }
 
   set: detail {
