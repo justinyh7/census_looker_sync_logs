@@ -62,9 +62,15 @@ view: sync_logs {
   }
 
   dimension_group: _census_logged_at {
+    timeframes: [raw, date]
     label: "Log"
     type: time
     sql: ${TABLE}._census_logged_at ;;
+  }
+
+  dimension: census_date {
+    # type: string
+    sql: ${_census_logged_at_raw} ;;
   }
 
   set: detail {
@@ -78,8 +84,7 @@ view: sync_logs {
       batch_completed_at_time,
       operation,
       status,
-      status_message,
-      _census_logged_at_time
+      status_message
     ]
   }
 
