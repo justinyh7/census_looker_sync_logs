@@ -20,8 +20,8 @@ include: "sync_logs_dashboard.dashboard.lookml"   # include a LookML dashboard c
 # }
 
 explore: sync_logs {
-  access_filter: {
-    field: status
-    user_attribute: team
-  }
+  # access_filter: {
+  #   field: status
+  #   user_attribute: team
+  # }
 }
