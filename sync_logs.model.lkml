@@ -20,6 +20,12 @@ include: "sync_logs_dashboard.dashboard.lookml"   # include a LookML dashboard c
 # }
 
 explore: sync_logs {
+
+  join: source_objects {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${sync_logs.source_object_id} = ${source_objects.id} ;;
+  }
   # access_filter: {
   #   field: status
   #   user_attribute: team
