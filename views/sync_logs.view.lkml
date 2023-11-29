@@ -1,5 +1,5 @@
 view: sync_logs {
-  sql_table_name: census.sync_log ;;
+  sql_table_name: census.census.sync_log ;;
 
   dimension: log_id {
     type: string
