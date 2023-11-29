@@ -73,6 +73,26 @@ view: sync_logs {
     sql: ${_census_logged_at_raw} ;;
   }
 
+  dimension: destination_id {
+    type: string
+    sql: ${TABLE}."DESTINATION_ID" ;;
+  }
+
+  dimension: destination_object_id {
+    type: string
+    sql: ${TABLE}."DESTINATION_OBJECT_ID" ;;
+  }
+
+  dimension: source_id {
+    type: string
+    sql: ${TABLE}."SOURCE_ID" ;;
+  }
+
+  dimension: source_object_id {
+    type: string
+    sql: ${TABLE}."SOURCE_OBJECT_ID" ;;
+  }
+
   set: detail {
     fields: [
       log_id,
